@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+header {
+  background: orange;
+}
+main {
+  background: green;
+}
+footer {
+  background: yellowgreen;
+}
+
+// SASS DEISNG
+
+@mixin para-style($size, $style) {
+  font-size: $size;
+  text-align: $style;
+  margin: 10px 0;
+  color: white;
+}
+
+#about p {
+  @include para-style(18px, left);
+}
+
+#education p {
+  @include para-style(16px, justify);
+}
+
+.btn {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-download {
+  @extend .btn;
+  background-color: bisque;
+}
+
+.learn-more {
+  @extend .btn;
+  background-color: aqua;
+}
+
+// mixin
+@mixin setFontSize($value) {
+  @if $value == small {
+    font-size: 12px;
+  } @else if $value == medium {
+    font-size: 18px;
+  } @else if $value == large {
+    font-size: 22px;
+  } @else {
+    font-size: none;
+  }
+}
+
+span {
+  @include setFontSize(large);
+}
+
+$colors: (
+  color1: red,
+  color2: green,
+  color3: blue,
+);
+
+@each $color in red, green, blue {
+  .#{$color}-text {
+    color: $color;
+  }
+}
+
+@each $key, $color in $colors {
+  .#{$color}-text {
+    color: $color;
+  }
+}
